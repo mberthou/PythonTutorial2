@@ -23,19 +23,23 @@ def generateDiodeIV(nfact,barrier,Rser):
     Varray[0] = 0
     return Iarray,Varray
     
-seed(datetime.now())
+    
+def generateDiodeFiles(targetDir):
+    seed(datetime.now())
 
-for x in range(10) :
-    for y in range(10) :
-        for dev in ["D01","D02","D03"] :
-            for meas in ["IVDirect"] :
-                fileName = "20191022_X" + str(x) + "Y" + str(y)\
-                    + "_" + dev + "_" + meas + ".csv"
-                print( fileName )
-                # file = open("testData/" + fileName,'w')
-                xarray,yarray = generateDiodeIV(1.0 + 0.05*random(), 1.2 + 0.01*random(), 1.9+0.2*random())
-                varray = np.zeros((xarray.size,2))
-                varray[:,1] = xarray
-                varray[:,0] = yarray
-                np.savetxt("C:/Users/Maxime/Documents/Python Scripts/testData/" + fileName, varray)
-                # file.close()
+    for x in range(10) :
+        for y in range(10) :
+            for dev in ["D01","D02","D03"] :
+                for meas in ["IVDirect"] :
+                    fileName = "20191022_X" + str(x) + "Y" + str(y)\
+                        + "_" + dev + "_" + meas + ".csv"
+                    print( fileName )
+                    # file = open("testData/" + fileName,'w')
+                    xarray,yarray = generateDiodeIV(1.0 + 0.05*random(), 1.2 + 0.01*random(), 1.9+0.2*random())
+                    varray = np.zeros((xarray.size,2))
+                    varray[:,1] = xarray
+                    varray[:,0] = yarray
+                    np.savetxt(targetDir + fileName, varray)
+                    # file.close()
+                    
+generateDiodeFiles("C:/Users/Maxime/Documents/Python Scripts/testData/")
