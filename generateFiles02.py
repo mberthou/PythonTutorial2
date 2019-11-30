@@ -34,8 +34,6 @@ def generateDiodeFiles(targetDir):
                 measName = "IVDirect"
                 fileName = "20191022_X" + str(x) + "Y" + str(y)\
                     + "_" + dev + "_" + measName + ".csv"
-                print( fileName )
-                # file = open("testData/" + fileName,'w')
                 gaussVar = gauss(1.0,0.01)
                 nfact = 1.02*gaussVar
                 phiBar = gaussVar*1.2
@@ -45,6 +43,5 @@ def generateDiodeFiles(targetDir):
                 varray[:,1] = xarray
                 varray[:,0] = yarray
                 np.savetxt(targetDir + "/" + fileName, varray)
-                # file.close()
                     
 generateDiodeFiles("C:/Users/Maxime/Documents/Python Scripts/testData/")
