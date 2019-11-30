@@ -28,8 +28,10 @@ def generateDiodeIV(nfact,barrier,Rser):
 def generateDiodeFiles(targetDir):
     seed(datetime.now())
     
-    for x in range(10) :
-        for y in range(10) :
+    for x in range(11) :
+        for y in range(11) :
+            if (x-6)*(x-6)+(y-6)*(y-6) > 4*4:
+                continue
             for dev in ["D01","D02","D03"] :
                 measName = "IVDirect"
                 fileName = "20191022_X" + str(x) + "Y" + str(y)\
